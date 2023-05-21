@@ -46,6 +46,7 @@
       <ul class="navbar-nav mb-2 mb-lg-0">
       <li class="nav-item "><a class="nav-link " href="login.php">Log In</a> </li>
       <li class="nav-item"><a class="nav-link" href="register.php">Register</a> </li>
+      <li class="nav-item"><img src="./resources/cart.png" alt="cart_icon" style="width: 30px; height: 30px;"> </li>
       </ul>
       
     </div>
