@@ -12,29 +12,6 @@
 <body>
 
 
-<?php
-session_start();
-if(isset($_POST['save']))
-{
-    extract($_POST);
-    include 'dbcon.php';
-    $sql=mysqli_query($conn,"SELECT * FROM user_tbl where email = '$email' and Password='md5($pass)'");
-    $row  = mysqli_fetch_array($sql);
-    if(is_array($row))
-    {
-        $_SESSION["user_id"] = $row['user_id'];
-        $_SESSION["Email"]=$row['Email'];
-        $_SESSION["password"]=$row['password'];
-        
-        header("Location: index.php"); 
-    }
-    else
-    {
-        echo "Invalid Email ID/Password";
-    }
-}
-?>
-
 <?php  include 'nav.php'; ?>
    <div>
  
@@ -43,9 +20,9 @@ if(isset($_POST['save']))
             <div class="border rounded border-dark p-4">
                 <h3>Sign In Form</h3>
                 <label>Email</label><br>
-                <input class="form-control mb-2" type="email" name="email" id="email" placeholder="Your Email">
+                <input class="form-control mb-2" type="text" name="email" id="email" placeholder="Your Email">
                 <label>Password</label><br>
-                <input class="form-control mb-2" type="password" name="password" id="password" placeholder="Password">
+                <input class="form-control mb-2" type="text" name="password" id="password" placeholder="Password">
                 <input class="bg-dark text-white form-control mb-2" type="submit" name="btnlogin" id="btnlogin" value="Sign In">
                 <p><a href="" id="forgotpass">Forgot Password?</a></p>
                 <hr>
@@ -63,7 +40,6 @@ if(isset($_POST['save']))
 
 
 
-
 </body>
 </html>
 
@@ -71,3 +47,40 @@ if(isset($_POST['save']))
 
 
 
+<?php  
+if(isset($_POST["submit"])){  
+  
+if(!empty($_POST['email']) && !empty($_POST['password'])) {  
+    $user=$_POST['email'];  
+    $pass=$_POST['password'];  
+  
+    $con=mysql_connect('localhost','root','') or die(mysql_error());  
+    mysql_select_db('ecommerce_db') or die("cannot select DB");  
+  
+    $query=mysql_query("SELECT * FROM user_tbl WHERE 'email'='.$email' AND 'password'='.$password'");  
+    $numrows=mysql_num_rows($query);  
+    if($numrows!=0)  
+    {  
+    while($row=mysql_fetch_assoc($query))  
+    {  
+    $dbusername=$row['email'];  
+    $dbpassword=$row['password'];  
+    }  
+  
+    if($user == $dbusername && $pass == $dbpassword)  
+    {  
+    session_start();  
+    $_SESSION['sess_user']=$user;  
+  
+    /* Redirect browser */  
+    header("Location: index.php");  
+    }  
+    } else {  
+    echo "Invalid username or password!";  
+    }  
+  
+} else {  
+    echo "All fields are required!";  
+}  
+}  
+?>  
