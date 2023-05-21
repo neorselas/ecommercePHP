@@ -11,10 +11,34 @@
 </head>
 <body>
 
+
+<?php
+session_start();
+if(isset($_POST['save']))
+{
+    extract($_POST);
+    include 'dbcon.php';
+    $sql=mysqli_query($conn,"SELECT * FROM user_tbl where email = '$email' and Password='md5($pass)'");
+    $row  = mysqli_fetch_array($sql);
+    if(is_array($row))
+    {
+        $_SESSION["user_id"] = $row['user_id'];
+        $_SESSION["Email"]=$row['Email'];
+        $_SESSION["password"]=$row['password'];
+        
+        header("Location: index.php"); 
+    }
+    else
+    {
+        echo "Invalid Email ID/Password";
+    }
+}
+?>
+
 <?php  include 'nav.php'; ?>
-   
+   <div>
  
-    <form class=" d-flex justify-content-center p-5" name="loginform" method="post" action="/action_page.php">
+    <form class=" d-flex justify-content-center p-5" name="loginform" method="post" action="index.php">
         
             <div class="border rounded border-dark p-4">
                 <h3>Sign In Form</h3>
@@ -33,8 +57,12 @@
     </form>
     </div>
 </div>
+</div>
 
 <?php  include 'footer.php'; ?>
+
+
+
 
 </body>
 </html>

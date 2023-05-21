@@ -12,17 +12,18 @@
 <body>
 
 <?php  include 'nav.php'; ?>
+<?php  include 'dbcon.php'; ?>
    
  
-    <form class=" d-flex justify-content-center p-5" name="loginform" method="post" action="/action_page.php">
+    <form class=" d-flex justify-content-center p-5" name="loginform" method="get" action="confirm.php">
         
             <div class="border rounded border-dark p-4">
             <h3>Sign Up Form</h3>
-                <input class="form-control mb-2" type="text" name="username" id="username" placeholder="UserName">
-                <input class="form-control mb-2" type="email" name="email" id="email" placeholder="Email">
-                <input class="form-control mb-2" type="password" name="password" id="password" placeholder="Password">
+                <input class="form-control mb-2" type="text" name="form_username" id="username" placeholder="UserName">
+                <input class="form-control mb-2" type="text" name="form_email" id="email" placeholder="Email">
+                <input class="form-control mb-2" type="text" name="form_password" id="password" placeholder="Password">
                 <!-- <input type="password" name="password2" id="password2" placeholder="Cornfirm Password"><br><br> -->
-                <input class="bg-dark text-white form-control mb-2" type="submit" name="btnlogin" id="btnlogin" value="Register" onclick="validateform();">
+                <input class="bg-dark text-white form-control mb-2" type="submit" name="btnlogin" id="btnlogin" value="Register">
                                 
                 <p><input class="m-2" type="checkbox" name="terms&condition" id="terms">I agree to the <a href="#" id="terms2"> Terms & Condition</a></p>
 
@@ -40,8 +41,4 @@
 
 </body>
 </html>
-
-
-
-
 

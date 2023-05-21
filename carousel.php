@@ -14,7 +14,8 @@
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
 <div class="carousel-inner">
   <div class="carousel-item active">
-    <img class="d-block w-100" src="https://images.unsplash.com/photo-1515940175183-6798529cb860?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Z2FkZ2V0fGVufDB8fDB8fHww&w=1000&q=80" alt="First slide">
+    <img class="d-block w-100" src="./resources/carousel2.jpg" alt="First slide" style="width: 100%, height: 400px;">
+    <!-- src="https://images.unsplash.com/photo-1515940175183-6798529cb860?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Z2FkZ2V0fGVufDB8fDB8fHww&w=1000&q=80" alt="First slide"> -->
   </div>
   <div class="carousel-item">
     <img class="d-block w-100" src="./resources/carousel1.jpg" alt="Second slide">
@@ -38,8 +39,3 @@
 </body>
 </html>
 
-
-
-<?php
-
- 
